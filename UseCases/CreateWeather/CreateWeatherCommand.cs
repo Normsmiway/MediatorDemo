@@ -1,7 +1,5 @@
 ﻿using MediatR;
 using System;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace MediatorDemo.UseCases.CreateWeather
 {
@@ -25,21 +23,6 @@ namespace MediatorDemo.UseCases.CreateWeather
             Date = DateTime.UtcNow;
             TemperatureC = tempC;
             Summary = Summaries[tempC];
-        }
-    }
-
-
-    internal sealed class CreateWeatherCommandHandler : IRequestHandler<CreateWeatherCommand, WeatherForecast>
-    {
-
-        public async Task<WeatherForecast> Handle(CreateWeatherCommand request, CancellationToken cancellationToken)
-        {
-            return new WeatherForecast()
-            {
-                Date = request.Date,
-                Summary = request.Summary,
-                TemperatureC = request.TemperatureC
-            };
         }
     }
 }
